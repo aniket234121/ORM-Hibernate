@@ -20,6 +20,8 @@
 
         <!-- Mapping annotated entity classes -->
         <mapping class="Entity.Student" />
-
+        <mapping class="learning.annotations.Entity.Student2"/>
+        <mapping class="learning.annotations.Entity.Address"/>
+        <mapping class="learning.annotations.Entity.Course"/>
     </session-factory>
 </hibernate-configuration>
