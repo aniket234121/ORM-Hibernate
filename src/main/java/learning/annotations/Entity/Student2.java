@@ -21,8 +21,23 @@ public class Student2 {
     @JoinColumn(name = "s_address")
     private Address address;
 
-    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<Course> courses;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "student_faculties",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "faculty_id")
+    )
+    private List<Faculty> faculties;
+
+    public List<Faculty> getFaculties() {
+        return faculties;
+    }
+
+    public void setFaculties(List<Faculty> faculties) {
+        this.faculties = faculties;
+    }
 
     public List<Course> getCourses() {
         return courses;
