@@ -24,6 +24,9 @@
         <mapping class="learning.annotations.Entity.Address"/>
         <mapping class="learning.annotations.Entity.Course"/>
         <mapping class="learning.annotations.Entity.Faculty"/>
+        <mapping class="Practice.BlogApp.Entity.Post"/>
+        <mapping class="Practice.BlogApp.Entity.Author"/>
+        <mapping class="Practice.BlogApp.Entity.Tag"/>
 
     </session-factory>
 </hibernate-configuration>
