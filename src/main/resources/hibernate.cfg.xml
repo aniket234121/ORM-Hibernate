@@ -19,14 +19,14 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Mapping annotated entity classes -->
-        <mapping class="Entity.Student" />
-        <mapping class="learning.annotations.Entity.Student2"/>
-        <mapping class="learning.annotations.Entity.Address"/>
-        <mapping class="learning.annotations.Entity.Course"/>
-        <mapping class="learning.annotations.Entity.Faculty"/>
-        <mapping class="Practice.BlogApp.Entity.Post"/>
-        <mapping class="Practice.BlogApp.Entity.Author"/>
-        <mapping class="Practice.BlogApp.Entity.Tag"/>
+        <mapping class="util.Student" />
+        <mapping class="mapping.Entity.Student2"/>
+        <mapping class="mapping.Entity.Address"/>
+        <mapping class="mapping.Entity.Course"/>
+        <mapping class="mapping.Entity.Faculty"/>
+        <mapping class="PracticeProject.BlogApp.Entity.Post"/>
+        <mapping class="PracticeProject.BlogApp.Entity.Author"/>
+        <mapping class="PracticeProject.BlogApp.Entity.Tag"/>
 
     </session-factory>
 </hibernate-configuration>

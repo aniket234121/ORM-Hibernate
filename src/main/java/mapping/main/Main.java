@@ -1,10 +1,10 @@
-package learning.annotations.main;
+package mapping.main;
 
 
-import learning.annotations.Entity.Address;
-import learning.annotations.Entity.Course;
-import learning.annotations.Entity.Faculty;
-import learning.annotations.Entity.Student2;
+import mapping.Entity.Address;
+import mapping.Entity.Course;
+import mapping.Entity.Faculty;
+import mapping.Entity.Student2;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

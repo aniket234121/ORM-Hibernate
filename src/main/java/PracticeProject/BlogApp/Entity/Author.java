@@ -1,4 +1,4 @@
-package Practice.BlogApp.Entity;
+package PracticeProject.BlogApp.Entity;
 
 import jakarta.persistence.*;
 

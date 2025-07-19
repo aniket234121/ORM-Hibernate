@@ -1,4 +1,4 @@
-package learning.annotations.Entity;
+package mapping.Entity;
 
 import jakarta.persistence.*;
 

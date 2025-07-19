@@ -1,6 +1,6 @@
 package CRUD;
 
-import Entity.Student;
+import util.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -8,7 +8,7 @@ import util.HibernateUtil;
 
 import java.util.Scanner;
 
-public class Main {
+public class DemoCRUD {
     private static Scanner scanner;
 
     static {

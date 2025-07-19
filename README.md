@@ -201,16 +201,16 @@ own variant of SQL, which are called SQL dialects.
 
 example
 
-```java
+```
 
-    1.Transient
-    
-    Student s = new Student();  // Just a POJO
+1.Transient
+
+Student s = new Student();  // Just a POJO
     s.setName("John");          // No DB interaction
     
     2.Persistent
-    
-    Session session = factory.openSession();
+
+Session session = factory.openSession();
     session.beginTransaction();
     
     session.save(s);   // Now Hibernate tracks 's' (it's persistent)
@@ -233,17 +233,18 @@ example
 the motive of using a hibernate is to skip the SQL part and focus on core java concepts.
 
 Generally, in hibernate, we use
-XML mapping files for converting our POJO classes data to database data and vice-versa. 
+XML mapping files for converting our POJO classes data to database data and vice-versa.
 
 But using XML becomes a little
 confusing so, in replacement of using XML, we use annotations inside our POJO classes directly to declare the changes.
 
 Also using annotations inside out POJO classes makes things simple to remember and easy to use.
 
-Annotation is a powerful method of providing metadata for the database tables and also it gives brief information 
-about the database table structure and also POJO classes simultaneously. 
+Annotation is a powerful method of providing metadata for the database tables and also it gives brief information
+about the database table structure and also POJO classes simultaneously.
 
 ### 1. Entity mapping annotations
+
 | Annotation                                                          | Description                                                          | Usage Location |
 |---------------------------------------------------------------------|----------------------------------------------------------------------|----------------|
 | `@Entity`                                                           | Marks a class as a persistent Hibernate entity                       | Class          |
@@ -254,12 +255,12 @@ about the database table structure and also POJO classes simultaneously.
 | `@Transient`                                                        | Prevents a field from being persisted                                | Field          |
 | `@Access(AccessType.FIELD/PROPERTY)`                                | Controls access strategy (field or getter/setter)                    | Field / Class  |
 
-
-1.  Pick one access strategy  -  Either all annotations on **fields** OR all on **getters**. Not mixed
+1. Pick one access strategy - Either all annotations on **fields** OR all on **getters**. Not mixed
 2. `@Id` decides access type - If `@Id` is on getter → Hibernate uses **property access**.
-3.  Don’t mix annotations     - If `@Id` is on a getter, put all annotations on getters (not fields).
+3. Don’t mix annotations - If `@Id` is on a getter, put all annotations on getters (not fields).
 
 ### 2. mapping annotations
+
 | Annotation                                                              | Description                                               | Usage Location |
 |-------------------------------------------------------------------------|-----------------------------------------------------------|----------------|
 | `@OneToOne`                                                             | Defines a one-to-one relationship                         | Field          |
@@ -273,6 +274,7 @@ about the database table structure and also POJO classes simultaneously.
 | `@Fetch(FetchMode.JOIN/SELECT/SUBSELECT)`                               | (Hibernate-only) Defines fetch strategy                   | Field          |
 
 ### 3. Entity lifecycle callback annotations
+
 | Annotation     | Description                            | Usage Location |
 |----------------|----------------------------------------|----------------|
 | `@PrePersist`  | Called before saving a new entity      | Method         |
@@ -283,8 +285,8 @@ about the database table structure and also POJO classes simultaneously.
 | `@PostRemove`  | Called after deleting an entity        | Method         |
 | `@PostLoad`    | Called after entity is fetched from DB | Method         |
 
-
 ### 4. Fetching ,caching & optimization
+
 | Annotation               | Description                              | Usage Location |
 |--------------------------|------------------------------------------|----------------|
 | `@Fetch(FetchMode.JOIN)` | (Hibernate) Customize fetch strategy     | Field          |
@@ -292,6 +294,7 @@ about the database table structure and also POJO classes simultaneously.
 | `@Cache(usage = ...)`    | (Hibernate) Enables second-level caching | Class / Field  |
 
 ### 5. Inheritance mapping annotations
+
 | Annotation                           | Description                                         | Usage Location |
 |--------------------------------------|-----------------------------------------------------|----------------|
 | `@Inheritance(strategy = ...)`       | Defines inheritance strategy (`SINGLE_TABLE`, etc.) | Class          |
@@ -299,6 +302,7 @@ about the database table structure and also POJO classes simultaneously.
 | `@DiscriminatorValue("...")`         | Value assigned to subclass in discriminator column  | Class          |
 
 ### more...
+
 | Annotation                                    | Description                                          | Usage Location |
 |-----------------------------------------------|------------------------------------------------------|----------------|
 | `@Lob`                                        | Marks field as Large Object (`CLOB` or `BLOB`)       | Field          |
@@ -307,3 +311,120 @@ about the database table structure and also POJO classes simultaneously.
 | `@Version`                                    | Enables optimistic locking                           | Field          |
 | `@CreationTimestamp`                          | (Hibernate) Auto-populates timestamp on insert       | Field          |
 | `@UpdateTimestamp`                            | (Hibernate) Auto-populates timestamp on update       | Field          |
+
+## CRUD Operations in hibernate
+
+CRUD stands for:
+
+1. Create – Insert a new record
+2. Read – Retrieve records
+3. Update – Modify existing records
+4. Delete – Remove records
+
+Hibernate provides methods like **persist(), get(), update(), and delete()** to perform these operations via **ORM (
+Object
+Relational Mapping).**
+
+#### 🛠 Prerequisites
+
+* Annotated entity class (@Entity)
+* Hibernate configuration (hibernate.cfg.xml) (mapping class in configurations)
+* HibernateUtil class with a configured SessionFactory or create configuration object and sessionFactory object
+
+**CREATE**
+```
+
+    Student student = new Student();
+    student.setId(1);
+    student.setName("Aniket");
+    Transaction=null;
+    
+    Try(Session session = sessionFactory.openSession();)
+    {
+        transaction = session.beginTransaction();
+        session.persist(student);
+        tx.commit();
+    }catch(Exception e){
+    
+     e.printStackTrace();
+     if(transaction==null)transaction.rollback();
+     
+     }
+    
+
+```
+
+**READ**
+
+get () Returns the object if found, else null.
+
+Use load() if you're sure the object exists (throws Exception if not).
+```
+    int id = 1;
+
+    Session session = sessionFactory.openSession();
+    Student student = session.get(Student.class, id);
+    session.close();
+    
+    System.out.println(student);
+
+```
+**UPDATE**
+
+Hibernate automatically tracks changes made inside a transaction and issues the appropriate UPDATE query.
+```
+    Session session = sessionFactory.openSession();
+    Transaction tx = session.beginTransaction();
+    
+    Student student = session.get(Student.class, id);
+    if (student != null) {
+        student.setName("Updated Name"); // automatic dirty checking
+    }
+    
+    tx.commit();
+    session.close();
+
+```
+**DELETE**
+
+* delete() requires a persistent object.
+* Ensure the object exists before deleting.
+```
+    Session session = sessionFactory.openSession();
+    Transaction tx = session.beginTransaction();
+    
+    Student student = session.get(Student.class, id);
+    if (student != null) {
+        session.delete(student);
+    }
+    
+    tx.commit();
+    session.close();
+
+```
+#### 🔐 Transaction Management
+* Always open a Transaction for each CRUD operation.
+* Commit only after operation succeeds.
+* Rollback if an exception occurs.
+
+Keep SessionFactory as a singleton or static field (use HibernateUtil).
+```java
+    public class HibernateUtil {
+        private static SessionFactory sessionFactory;
+    
+        static {
+            Configuration cfg = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Student.class);
+            sessionFactory = cfg.buildSessionFactory();
+        }
+    
+        public static SessionFactory getSessionFactory() {
+            return sessionFactory;
+        }
+    }
+
+```
+### Mappings
+
+[For Relationship Mapping click here ](src/main/java/mapping/Mappings.md)

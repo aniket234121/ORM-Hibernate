@@ -1,6 +1,6 @@
-package learn.orm;
+package com.hibernate;
 
-import Entity.Student;
+import util.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

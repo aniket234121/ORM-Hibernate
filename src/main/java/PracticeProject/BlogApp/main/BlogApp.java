@@ -1,8 +1,8 @@
-package Practice.BlogApp.main;
+package PracticeProject.BlogApp.main;
 
-import Practice.BlogApp.Entity.Author;
-import Practice.BlogApp.Entity.Post;
-import Practice.BlogApp.Entity.Tag;
+import PracticeProject.BlogApp.Entity.Author;
+import PracticeProject.BlogApp.Entity.Post;
+import PracticeProject.BlogApp.Entity.Tag;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
