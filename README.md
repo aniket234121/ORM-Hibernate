@@ -428,3 +428,6 @@ Keep SessionFactory as a singleton or static field (use HibernateUtil).
 ### Mappings
 
 [For Relationship Mapping click here ](src/main/java/mapping/Mappings.md)
+
+### HQL (Hibernate Query language)
+[Hql notes](src/main/java/HQL/HQL.md)
