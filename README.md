@@ -38,22 +38,28 @@ It solves the problems of JDBC by:
 | ✅ Transaction Management | Built-in support for clean transaction handling.                         |
 | ✅ Database Independence  | Easily switch between different RDBMS (MySQL, PostgreSQL, Oracle, etc.). |
 
-## 2.Hibernate architecture
+## 2. Hibernate architecture
 [Hibernate Architecture](src/main/java/util/Architecture.md)
-## 3.Configuration
+## 3. Configuration
 [Configuration notes](src/main/java/util/Configuration.md)
 
-## 4.Object States
+## 4. Object States
 [Object states](src/main/java/util/ObjectStates.md)
 
-## 5.Hiberante Annotations
+## 5. Hibernate Annotations
 [Hibernate Annotation notes](src/main/java/mapping/Annotations.md)
 
-## 6.CRUD Operations in hibernate
+## 6. CRUD Operations in hibernate
 [CRUD notes](src/main/java/CRUD/Crud.md)
 
-## 7.Mappings
+## 7. Mappings
 [For Relationship Mapping click here ](src/main/java/mapping/Mappings.md)
 
-## 8.HQL (Hibernate Query language)
+## 8. HQL (Hibernate Query language)
 [Hql notes](src/main/java/HQL/HQL.md)
+
+## 9. Native SQL
+[Native SQL](src/main/java/HQL/NativeSQL.md)
+
+## 10. Caching
+[Caching notes](src/main/java/Caching/Caching.md)

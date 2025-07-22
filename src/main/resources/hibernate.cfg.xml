@@ -14,9 +14,16 @@
 
         <!-- Hibernate core settings -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.show_sql">false</property>
-        <property name="hibernate.format_sql">false</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Caching configuration -->
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.jcache.JCacheRegionFactory</property>
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.use_query_cache">true</property>
+        <property name="javax.cache.provider">org.ehcache.jsr107.EhcacheCachingProvider</property>
+        <property name="hibernate.javax.cache.uri">ehcache.xml</property>
 
         <!-- Mapping annotated entity classes -->
         <mapping class="util.Student" />
@@ -27,6 +34,7 @@
         <mapping class="PracticeProject.BlogApp.Entity.Post"/>
         <mapping class="PracticeProject.BlogApp.Entity.Author"/>
         <mapping class="PracticeProject.BlogApp.Entity.Tag"/>
+        <mapping class="Caching.EmployeeEntity"/>
 
     </session-factory>
 </hibernate-configuration>
